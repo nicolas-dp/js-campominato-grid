@@ -1,0 +1,50 @@
+
+
+body{
+    background-color: #7FFFD4;
+}
+
+.container_main {
+    width: 800px;
+    margin: 2rem auto;
+
+}
+
+.bg_nav_white{
+    background-color: white;
+}
+
+.color_text_logo{
+    color: darkblue;
+}
+
+.cells{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cell{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(100% / 8);
+    border: 1px solid black;
+    aspect-ratio: 1/1;
+    color: white;
+}
+
+.active{
+    background-color: chartreuse;
+}
+
+.active_green{
+    background-color: green;
+}
+
+.active_red{
+    background-color: red;
+}
+
+.cell>span{
+    opacity: 0;
+}
