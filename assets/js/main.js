@@ -6,9 +6,6 @@ con difficoltà 2 => tra 1 e 81
 con difficoltà 3 => tra 1 e 49
 Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro.
 */
-let difficult_low = 100;
-let difficult_medium = 81;
-let difficult_high = 61;
 
 /**
  * 
@@ -16,13 +13,16 @@ let difficult_high = 61;
  * @param {string} tag_name a tag name
  * @param {string} class_name a class name
  */
-function generateGrid(number_of_cells, selector, element_name, class_name) {
+function generateGrid(row_lenght, cols_lenght, selector, element_name, class_name) {
     const cellsElement = document.querySelector(selector)
-    for (let i = 1; i <= number_of_cells; i++) {
+    for (let i = 1; i <= row_lenght; i++) {
         const cell = document.createElement(element_name)
         cell.classList.add(class_name)
+        cell.style.width = `calc(100% / ${cols_lenght})`
         cellsElement.append(cell)
+        generateGridNumbers(row_lenght)
     }
+
 }
 
 function selectCells(selector) {
@@ -31,7 +31,7 @@ function selectCells(selector) {
 }
 
 //Attivazione colore al click
-function activateCell(selector, class_name) {
+function activateCell(selector) {
     const cells = selectCells(selector)
     for (let index = 0; index < cells.length; index++) {
         const cell = cells[index];
@@ -41,46 +41,19 @@ function activateCell(selector, class_name) {
     }
 }
 
-
-
-function getRandomInteger(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-
-function generateGridNumbers(min, max) {
+function generateGridNumbers(row_lenght) {
     const gridNumbers = []
-
-    while (gridNumbers.length !== max) {
-        const randomNumber = getRandomInteger(min, max)
-        //Esclusività di un numero nella griglia
-        if (!gridNumbers.includes(randomNumber)) {
-            gridNumbers.push(randomNumber)
-        }
+    for (let i = 1; i <= row_lenght; i++) {
+        gridNumbers.push(i)
+        
+        
     }
-    return gridNumbers
+    return gridNumbers;
 }
 
 
-function isEven(n) {
-    if (n % 2 === 0) {
-        return true
-    } else {
-        return false
 
-    }
-}
-
-function fillCells(selector) {
-    const cells = selectCells(selector)
-    //console.log(cells);
-    for (let index = 0; index < cells.length; index++) {
-        const cell = cells[index];
-        //console.log(cell);
-        const gridNumbers = generateGridNumbers(1, max)
-        cell.innerHTML = `<span>${gridNumbers[index]}</span>`
-    }
-}
+/* GENERARE LE FUNCTION DOPO IL CLICK */
 
 const elementButton = document.querySelector('.btn_genera');
 
@@ -89,21 +62,28 @@ elementButton.addEventListener("click", function () {
     console.log(option_value);
 
     if (option_value == 1) {
-        generateGridNumbers(1, difficult_low)
-        generateGrid(difficult_low, '.cells', 'div', 'cell')
+        row_lenght = 100;
+        cols_lenght = 10;
+        
+        generateGrid(row_lenght, cols_lenght, '.cells', "div", "cell")
         activateCell('.cell', 'selected')
-        fillCells('.cell')
-    } else if (option_value == 2) {
-        generateGridNumbers(1, difficult_medium)
-        generateGrid(difficult_medium, '.cells', 'div', 'cell')
-        activateCell('.cell', 'selected')
-        fillCells('.cell')
-    } else {
-        generateGridNumbers(1, difficult_hard)
-        generateGrid(difficult_hard, '.cells', 'div', 'cell')
-        activateCell('.cell', 'selected')
-        fillCells('.cell')
-    }
-})
+        
 
+    } else if (option_value == 2) {
+        row_lenght = 81;
+        cols_lenght = 9;
+        
+        generateGrid(row_lenght, cols_lenght, '.cells', "div", "cell")
+        activateCell('.cell', 'selected')
+       
+    } else {
+        row_lenght = 49;
+        cols_lenght = 7;
+        cells.inner
+        generateGrid(row_lenght, cols_lenght, '.cells', "div", "cell")
+        activateCell('.cell', 'selected')
+        
+    }
+
+})
 
