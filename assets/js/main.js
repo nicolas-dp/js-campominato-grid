@@ -15,14 +15,17 @@ Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro.
  */
 function generateGrid(row_lenght, cols_lenght, selector, element_name, class_name) {
     const cellsElement = document.querySelector(selector)
+    const gridNumbers = []
     for (let i = 1; i <= row_lenght; i++) {
         const cell = document.createElement(element_name)
         cell.classList.add(class_name)
+        cell.innerHTML += cell[i]
         cell.style.width = `calc(100% / ${cols_lenght})`
         cellsElement.append(cell)
-        generateGridNumbers(row_lenght)
+        gridNumbers.push(i)
+        
     }
-
+    return gridNumbers;
 }
 
 function selectCells(selector) {
@@ -41,16 +44,6 @@ function activateCell(selector) {
     }
 }
 
-function generateGridNumbers(row_lenght) {
-    const gridNumbers = []
-    for (let i = 1; i <= row_lenght; i++) {
-        gridNumbers.push(i)
-        
-        
-    }
-    return gridNumbers;
-}
-
 
 
 /* GENERARE LE FUNCTION DOPO IL CLICK */
@@ -67,7 +60,7 @@ elementButton.addEventListener("click", function () {
         
         generateGrid(row_lenght, cols_lenght, '.cells', "div", "cell")
         activateCell('.cell', 'selected')
-        
+        console.log(generateGrid(row_lenght, cols_lenght, '.cells', "div", "cell"));
 
     } else if (option_value == 2) {
         row_lenght = 81;
@@ -79,7 +72,7 @@ elementButton.addEventListener("click", function () {
     } else {
         row_lenght = 49;
         cols_lenght = 7;
-        cells.inner
+        
         generateGrid(row_lenght, cols_lenght, '.cells', "div", "cell")
         activateCell('.cell', 'selected')
         
