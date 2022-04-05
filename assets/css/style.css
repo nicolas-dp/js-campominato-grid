@@ -14,10 +14,6 @@ body{
     background-color: white;
 }
 
-.color_text_logo{
-    color: darkblue;
-}
-
 .cells{
     display: flex;
     flex-wrap: wrap;
@@ -30,21 +26,11 @@ body{
     width: calc(100% / 8);
     border: 1px solid black;
     aspect-ratio: 1/1;
-    color: white;
+    color: black;
 }
 
-.active{
-    background-color: chartreuse;
+.selected{
+    background-color: #6495ED;
+
 }
 
-.active_green{
-    background-color: green;
-}
-
-.active_red{
-    background-color: red;
-}
-
-.cell>span{
-    opacity: 0;
-}
