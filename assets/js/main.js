@@ -19,12 +19,14 @@ function generateGrid(row_lenght, cols_lenght, selector, element_name, class_nam
     for (let i = 1; i <= row_lenght; i++) {
         const cell = document.createElement(element_name)
         cell.classList.add(class_name)
-        cell.innerHTML += cell[i]
+        cell.innerHTML += [i]
+
         cell.style.width = `calc(100% / ${cols_lenght})`
         cellsElement.append(cell)
         gridNumbers.push(i)
         
     }
+    
     return gridNumbers;
 }
 
@@ -42,6 +44,8 @@ function activateCell(selector) {
             cell.classList.add("selected")
         })
     }
+
+
 }
 
 
@@ -52,7 +56,6 @@ const elementButton = document.querySelector('.btn_genera');
 
 elementButton.addEventListener("click", function () {
     let option_value = document.getElementById("mylist").value;
-    console.log(option_value);
 
     if (option_value == 1) {
         row_lenght = 100;
@@ -60,7 +63,6 @@ elementButton.addEventListener("click", function () {
         
         generateGrid(row_lenght, cols_lenght, '.cells', "div", "cell")
         activateCell('.cell', 'selected')
-        console.log(generateGrid(row_lenght, cols_lenght, '.cells', "div", "cell"));
 
     } else if (option_value == 2) {
         row_lenght = 81;
